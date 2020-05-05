@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            padding: 10px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="password" name="password" value="" onKeyUp="onPasswordChange()">
+    <br>
+    <br>
+    <div id="passwordStrenght"> Siła hasła</div>
+    <script type="text/javascript">
+        function onPasswordChange() {
+            var points = 0;
+            var password = document.getElementById("password");
+            console.log(password.value.length);
+            if (password.value.length == 0) {
+                setStrenght(-1);
+            } else {
+                if (password.value.match(".*[0-9].*") !== null) {
+                    points++;
+                    console.log("posiada liczbe!");
+                }
+                if (password.value.match(".*[A-Z].*") !== null) {
+                    points++;
+                    console.log("posiada dużą litere!");
+                }
+                if (password.value.match(".*[a-z].*") !== null) {
+                    points++;
+                    console.log("posiada małą litere!");
+                }
+                if (password.value.length > 6) {
+                    points++;
+                    console.log("Wiecej niż 6 !");
+                }
+                console.log("points: " + points);
+                setStrenght(points);
+            }
+        }
+
+        function setStrenght(pkt) {
+            var passwdSt = document.getElementById("passwordStrenght");
+            if (pkt == -1) {
+                passwdSt.style.backgroundColor = "white";
+                passwdSt.style.color = "black";
+            } else if (pkt == 0) {
+                passwdSt.style.backgroundColor = "red";
+                passwdSt.style.color = "white";
+            } else if (pkt == 1) {
+                passwdSt.style.backgroundColor = "brown";
+                passwdSt.style.color = "white";
+            } else if (pkt == 2) {
+                passwdSt.style.backgroundColor = "orange";
+                passwdSt.style.color = "white";
+            } else if (pkt == 3) {
+                passwdSt.style.backgroundColor = "yellow";
+                passwdSt.style.color = "black";
+            } else if (pkt == 4) {
+                passwdSt.style.backgroundColor = "green";
+                passwdSt.style.color = "white";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
